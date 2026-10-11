@@ -1,0 +1,20 @@
+[Unit]
+Description=Studio Discord Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=studiobot
+WorkingDirectory=/opt/studio-bot
+ExecStart=/usr/bin/node start.mjs
+Restart=on-failure
+RestartSec=10
+# exit 2 = bad token/config; don't hammer Discord
+RestartPreventExitStatus=2
+KillSignal=SIGTERM
+TimeoutStopSec=20
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target

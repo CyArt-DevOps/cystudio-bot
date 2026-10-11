@@ -1,0 +1,159 @@
+{
+  "guildId": "931627693353631794",
+  "roles": {
+    "founder": "1524890090483089518",
+    "core": "1524890092676710701",
+    "mod": "1524890095453343915",
+    "verified": "1524890097458348244",
+    "newcomer": "932346888487858176",
+    "amateur": "1524893320671920218",
+    "pro": "1524893322529738823",
+    "advisor": "1524893324287148212",
+    "cyber": "1524893325860143279",
+    "ai": "1524893327864889454",
+    "web3": "1524893329953652736",
+    "scout": "1524894795238211665",
+    "ambassador": "1524894797104546014",
+    "trusted": "1524897596735488071",
+    "booster": "934233361487114323",
+    "questChampion": "1525295298472185907",
+    "streak": "1525295300284252302",
+    "campusAmb": "1525295302272225400",
+    "leadAmb": "1525295303991758869",
+    "talentMagnet": "1525295307565564056",
+    "builder": "1525297259552706633"
+  },
+  "ranks": [
+    {
+      "xp": 0,
+      "role": "932346888487858176",
+      "name": "✧ Newcomer"
+    },
+    {
+      "xp": 300,
+      "role": "1524893320671920218",
+      "name": "◈ Amateur"
+    },
+    {
+      "xp": 1000,
+      "role": "1525297259552706633",
+      "name": "◆ Builder"
+    },
+    {
+      "xp": 2500,
+      "role": "1524893322529738823",
+      "name": "★ Pro"
+    },
+    {
+      "xp": 10000,
+      "role": "1524893324287148212",
+      "name": "✦ Advisor"
+    }
+  ],
+  "channels": {
+    "welcome": "1524893352896757900",
+    "rules": "1524893354767417405",
+    "announcements": "1524893363306889406",
+    "events": "1524893367161589911",
+    "verify": "1524893357107839026",
+    "path": "1524893359142080652",
+    "general": "1524893376917409845",
+    "wins": "1524893382567002256",
+    "showcase": "1524893401265471628",
+    "leaderboard": "1524893371133464576",
+    "rankUps": "1524893372937011343",
+    "fame": "1524893369116000380",
+    "createTicket": "1524893417102901420",
+    "ticketsCategory": "1524893418533294253",
+    "modLogs": "1524893440230293504",
+    "inviteRewards": "1524894846559453315",
+    "startHere": "1524897723457998928",
+    "quests": "1525295315513643191",
+    "teamup": "1525295317669380268",
+    "ambassadorHq": "1525295319678582794",
+    "cyberFeed": "1536480119881998349",
+    "aiFeed": "1536480122167623750",
+    "joinLog": "1536480124675948624"
+  },
+  "invites": {
+    "xpPerInvite": 75,
+    "milestones": [
+      {
+        "count": 3,
+        "role": "1524894795238211665",
+        "name": "⟐ Scout",
+        "bonus": 300
+      },
+      {
+        "count": 10,
+        "role": "1524894797104546014",
+        "name": "◇ Ambassador",
+        "bonus": 1000
+      },
+      {
+        "count": 30,
+        "role": "1525295307565564056",
+        "name": "🧲 Talent Magnet",
+        "bonus": 3000
+      }
+    ]
+  },
+  "trustedXp": 120,
+  "boost": {
+    "bonusXp": 500,
+    "multiplier": 1.5
+  },
+  "phases": {
+    "quests": false,
+    "campus": false,
+    "interns": false,
+    "modpipeline": false,
+    "engage": false
+  },
+  "quests": {
+    "postHour": 17,
+    "solveXp": {
+      "easy": 60,
+      "hard": 150
+    },
+    "firstSolverQp": [
+      15,
+      10,
+      5
+    ],
+    "streakCertSolves": 15,
+    "maxAttemptsPerDay": 5
+  },
+  "campus": {
+    "minXp": 300,
+    "tiers": [
+      {
+        "name": "Campus Ambassador",
+        "role": "1525295302272225400",
+        "invites": 20,
+        "events": 1
+      },
+      {
+        "name": "Lead Ambassador",
+        "role": "1525295303991758869",
+        "invites": 75,
+        "events": 3
+      }
+    ]
+  },
+  "interns": {
+    "role": "1525295305808150578",
+    "defaultWaveSize": 70
+  },
+  "modpipe": {
+    "trialRole": "1525295309133975606",
+    "probationDays": 21,
+    "windowDays": 30,
+    "minActiveDays": 15
+  },
+  "engage": {
+    "reminderHour": 18,
+    "cooldownDays": 3,
+    "dailyCap": 40
+  }
+}
