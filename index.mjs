@@ -16,7 +16,10 @@ import * as modpipeline from './modules/modpipeline.mjs';
 import * as engagement from './modules/engagement.mjs';
 
 const cfg = JSON.parse(readFileSync(new URL('./config.json', import.meta.url)));
-const saveCfg = () => writeFileSync(new URL('./config.json', import.meta.url), JSON.stringify(cfg, null, 2));
+// /phase toggles persist in data/ so deploys can overwrite config.json without losing them
+const PHASES_FILE = 'data/phases.json';
+if (existsSync(PHASES_FILE)) cfg.phases = JSON.parse(readFileSync(PHASES_FILE));
+const saveCfg = () => writeFileSync(PHASES_FILE, JSON.stringify(cfg.phases ?? {}, null, 2));
 const RANKS = cfg.ranks; // ascending xp thresholds
 
 // ── XP store (data/xp.json, debounced writes)
