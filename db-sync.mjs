@@ -24,7 +24,7 @@ export const enabled = () => !!process.env.TIDB_URL;
 async function connect() {
   if (pool) return;
   const url = new URL(process.env.TIDB_URL);
-  const database = decodeURIComponent(url.pathname.slice(1)) || 'cyart_intern_bot';
+  const database = decodeURIComponent(url.pathname.slice(1)) || 'cystudio_bot';
   const base = {
     host: url.hostname,
     port: Number(url.port) || 4000,
