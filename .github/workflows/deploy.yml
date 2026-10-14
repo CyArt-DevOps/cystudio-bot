@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PANEL: https://dash.monkey-network.xyz
-      SERVER: 5b896d93
+      SERVER: d1b3b3fe
       KEY: ${{ secrets.PTERO_API_KEY }}
     steps:
       - uses: actions/checkout@v5
@@ -26,24 +26,13 @@ jobs:
       - name: Syntax check
         run: for f in *.mjs modules/*.mjs; do node --check "$f"; done
 
-      # Only app code ships; .env and data/ on the server are never touched.
-      - name: Build bundle
-        run: |
-          git archive --format=tar.gz -o deploy.tar.gz HEAD -- \
-            index.mjs start.mjs quest-bank.mjs config.json package.json package-lock.json modules
-          tar -tzf deploy.tar.gz
-
-      - name: Upload, unpack, restart
+      # The server git-pulls main and runs npm install on every start (AUTO_UPDATE=1),
+      # so deploying is just a restart. .env and data/ on the server are never touched.
+      - name: Restart server
         run: |
           set -euo pipefail
-          if [ -z "$KEY" ]; then echo "::warning::PTERO_API_KEY secret not set - skipping deploy"; exit 0; fi
-          api() { curl -fsS -H "Authorization: Bearer $KEY" -H "Accept: Application/vnd.pterodactyl.v1+json" -H "Content-Type: application/json" "$@"; }
-          BASE="$PANEL/api/client/servers/$SERVER"
-
-          URL=$(api "$BASE/files/upload" | jq -r .attributes.url)
-          curl -fsS -F "files=@deploy.tar.gz" "$URL&directory=/"
-
-          api -X POST "$BASE/files/decompress" -d '{"root":"/","file":"deploy.tar.gz"}'
-          api -X POST "$BASE/files/delete" -d '{"root":"/","files":["deploy.tar.gz"]}'
-          api -X POST "$BASE/power" -d '{"signal":"restart"}'
-          echo "Deployed $GITHUB_SHA and restarted server $SERVER"
+          if [ -z "$KEY" ]; then echo "::warning::PTERO_API_KEY secret not set - skipping restart"; exit 0; fi
+          curl -fsS -X POST "$PANEL/api/client/servers/$SERVER/power" \
+            -H "Authorization: Bearer $KEY" -H "Accept: Application/vnd.pterodactyl.v1+json" \
+            -H "Content-Type: application/json" -d '{"signal":"restart"}'
+          echo "Restarted $SERVER; it will pull $GITHUB_SHA on boot"
